@@ -1,7 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import YouTubeApi from './YouTubeApi';
+
 
 function App() {
+  
+  async function testing(data){
+    try{
+      let res = await YouTubeApi.loadClient();
+      console.log(res);
+      let test = await YouTubeApi.execute();
+      console.log(test)
+      return {success: true};
+    }catch(error){
+      console.error("Testing YouTube API for running it at the start.")
+    }
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +31,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={testing}>testing youtubeapi</button>
       </header>
     </div>
   );
